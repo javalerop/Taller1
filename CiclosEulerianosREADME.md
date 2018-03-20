@@ -1,13 +1,8 @@
-# Taller1
-int a = 0;
-int b = 0;
-int c = 0;
-int x1 = 0;
-int x2 = 0;
-int contador = 0;
-int ganar = 0;
-int x =0;
-int y = 0;
+# Taller1 : 
+El repositorio esta denominado Taller1, y dentro de esta carpeta se puede encontrar los diferentes archivos, en lo que concierne con las partes del taller, las cuales estan divididas de la siguiente manera, matriz, funcionamiento, movimiento, las cuales estan relacionadas entre si.
+
+Este taller esta hecho solamente en un nivel, debido a que todavia se estan desarrollando los niveles superiores, por lo tanto solamente cuenta con una matriz y sus coordenadas, tambien contiene un contador, el cual es el encargado de tener un numero exacto de movimientos (lineas o arcos) y condicionales los cuales sirven para poder conocer si la persona o el usario que esta jugando acaba de perder o acaba de ganar.
+
 
 int [] X = {300, 300, 360, 300, 240, 300, 500, 500, 100, 100};
 int [] Y = {100, 200, 260, 320, 260, 420, 420, 100, 100, 420};
