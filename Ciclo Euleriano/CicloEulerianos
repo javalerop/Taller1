@@ -1,0 +1,293 @@
+int c,d,x1, y1,x2,y2,mX,mY,i, value=0, k, de, Nlineas, ce;
+int[] a1=new int [20];
+int[] b1= new int [20];
+int[] eraser= new int [20];
+int a[];
+int b[];
+int M[][];
+
+void setup() {
+size(600, 700);
+}  
+
+void draw(){
+  background(0);
+  if(  key== 'x') {
+
+    strokeWeight(6);
+    pushStyle();
+    strokeWeight(7);
+    stroke(0,0,255);
+    textSize(30);
+    text("NIVEL 1", 20, 30);
+    text("Bienvenido a LINE", 160,600);
+    
+    line(300, 100, 300, 200);
+    line(300, 200, 360, 260);
+    line(360, 260, 300, 320);
+    line(300, 320, 240, 260);
+    line(240, 260, 300, 200);
+    line(300, 200, 300, 320);
+    line(300, 320, 300, 420);
+    line(300, 420, 500, 420);
+    line(500, 420, 500, 100);
+    line(500, 100, 300, 100);
+    line(300, 100, 100, 100);
+    line(100, 100, 100, 420);
+    line(100, 420, 300, 420);
+    
+    popStyle();
+    pushStyle();
+    stroke(255,0,0);
+    strokeWeight(6);
+    
+       int[][] M = {{0, 1, 0, 0, 0, 0, 0, 1, 1, 0}, 
+                    {1, 0, 1, 1, 1, 0, 0, 0, 0, 0}, 
+                    {0, 1, 0, 1, 0, 1, 1, 0, 0, 0}, 
+                    {0, 1, 1, 0, 1, 1, 0, 0, 0, 1}, 
+                    {0, 1, 0, 1, 0, 0, 0, 0, 1, 0}, 
+                    {0, 0, 0, 1, 0, 0, 1, 0, 0, 1}, 
+                    {0, 0, 0, 0, 0, 1, 0, 1, 0, 0}, 
+                    {1, 0, 0, 0, 0, 0, 1, 0, 0, 0}, 
+                    {1, 0, 0, 0, 1, 0, 0, 0, 0, 1}, 
+                    {0, 0, 0, 0, 0, 1, 0, 0, 1, 0},};
+
+    int [] a = {300, 300, 360, 300, 240, 300, 500, 500, 100, 100};
+    int [] b = {100, 200, 260, 320, 260, 420, 420, 100, 100, 420};
+    Nlineas=13;
+    for (int j=0; j< 10; j++) {
+      ellipse(a[j], b[j], 30, 30);
+    } 
+    popStyle();
+    stroke (255,0,0);
+    strokeWeight (8);
+    if (value >= 3) {
+      for (int er=0; er < value-2; er++) {
+        ce=eraser[er];
+        de=eraser[er+1];
+        M[ce][de]=0;
+        M[de][ce]=0;
+      }
+    } 
+    if (value ==1) {
+      line(a1[0], b1[0], mouseX, mouseY);
+    }
+    if ( value <=Nlineas && value >1 ) { 
+      c=eraser[value-2];
+      d=eraser[value-1];
+      if (M[c][d] ==1) {
+        line(a1[value-1], b1[value-1], mouseX, mouseY);
+        for (k=0; (k+1)<value; k++) {
+          x1=a1[(value-2-k)];
+          y1=b1[(value-2-k)];
+          x2=a1[(value-1-k)];
+          y2=b1[(value-1-k)];
+          line(x1, y1, x2, y2);
+        }
+      } else if ( M[c][d]==0 && value>1 && M[d][c]==0 ) {
+        println("Error");
+        value=0;
+      }
+    } else if (value >=Nlineas) { 
+      textSize(20);
+      text("Ganaste, Felicitaciones", 180, 50);
+      text("Presiona 1, luego a, y pasa al siguiente nivel" ,80, 560);
+      println("ganador");
+     
+    }}
+    if (key=='a'){
+     strokeWeight(6);
+    pushStyle();
+    strokeWeight(7);
+    textSize(30);
+    text("NIVEL 2", 20,30);
+    stroke(255);
+    line(500,200, 150,600);
+    line(150,600, 450,600);
+    line(450,600,300,100);
+    line(300,100,150,600);
+    line(150,600,100,200);
+    line(100,200,300,100);
+    line(300,100,500,200);
+    line(500,200,450,600);
+    popStyle();
+    pushStyle();
+    stroke(0,0,255);
+    strokeWeight(10);
+    
+       int[][] M = {{0, 1, 1, 1, 0}, 
+                    {1, 0, 1, 1, 1}, 
+                    {1, 1, 0, 1, 0}, 
+                    {1, 1, 1, 0, 1}, 
+                    {0, 1, 0, 1, 0}, };
+                      
+    int [] a = {500,150,450,300,150,100,300,500,450};
+    int [] b = {200,600,600,100,600,200,100,200,600};
+    Nlineas=8;
+     for (int j=0; j<6; j++) {
+      ellipse (a[j], b[j], 30,30);
+    } 
+    popStyle();
+    stroke (255,0,0);
+    strokeWeight (8);
+    if (value >= 3) {
+      for (int er=0; er < value-2; er++) {
+        ce=eraser[er];
+        de=eraser[er+1];
+        M[ce][de]=0;
+        M[de][ce]=0;
+      }
+    } 
+    if (value ==1) {
+      line(a1[0], b1[0], mouseX, mouseY);
+    }
+    if ( value <=Nlineas && value >1 ) { 
+      c=eraser[value-2];
+      d=eraser[value-1];
+      if (M[c][d] ==1) {
+        line(a1[value-1], b1[value-1], mouseX, mouseY);
+        for (k=0; (k+1)<value; k++) {
+          x1=a1[(value-2-k)];
+          y1=b1[(value-2-k)];
+          x2=a1[(value-1-k)];
+          y2=b1[(value-1-k)];
+          line(x1, y1, x2, y2);
+        }
+      } else if ( M[c][d]==0 && value>1 && M[d][c]==0 ) {
+        println("Error");
+        value=0;
+      }
+    } else if (value >=Nlineas) { 
+      stroke(255,0,0);
+      textSize(20);
+      text("Ganaste, Felicitaciones", 180,50);
+      textSize(20);
+      text("Presiona 1, luego z, y pasa al siguiente nivel" ,80, 650);
+      println("ganador");
+    }
+    
+  }
+  if(key=='z'){
+    strokeWeight(6);
+    pushStyle();
+    strokeWeight(7);
+    stroke(255);
+    
+    line(300,100,470,430);
+    line(470,430,80,200);
+    line(80,200,500,200);
+    line(500,200,130,430);
+    line(130,430,300,100);
+    
+    popStyle();
+    pushStyle();
+    stroke(0,0,255);
+    strokeWeight(10);
+    textSize(30);
+    text("NIVEL 3", 20,30);
+    
+       int[][] M = {{0, 1, 0, 0, 1}, 
+                    {1, 0, 1, 0, 0}, 
+                    {0, 1, 0, 1, 0}, 
+                    {0, 0, 1, 0, 1}, 
+                    {1, 0, 0, 1, 0}, };
+      
+    int [] a = {300,470,80,500,130};
+    int [] b = {100,430,200,200,430};
+    Nlineas=5;
+        for (int j=0; j<5; j++) {
+      ellipse (a[j], b[j], 30, 30);
+    } 
+    popStyle();
+    stroke (255,0,0);
+    strokeWeight (8);
+    if (value >= 3) {
+      for (int er=0; er < value-2; er++) {
+        ce=eraser[er];
+        de=eraser[er+1];
+        M[ce][de]=0;
+        M[de][ce]=0;
+      }
+    } 
+    if (value ==1) {
+      line(a1[0], b1[0], mouseX, mouseY);
+    }
+    if ( value <=Nlineas && value >1 ) { 
+      c=eraser[value-2];
+      d=eraser[value-1];
+      if (M[c][d] ==1) {
+        line(a1[value-1], b1[value-1], mouseX, mouseY);
+        for (k=0; (k+1)<value; k++) {
+          x1=a1[(value-2-k)];
+          y1=b1[(value-2-k)];
+          x2=a1[(value-1-k)];
+          y2=b1[(value-1-k)];
+          line(x1, y1, x2, y2);
+        }
+      } else if ( M[c][d]==0 && value>1 && M[d][c]==0 ) {
+        println("Error");
+        value=0;
+      }
+    } else if (value >=Nlineas) { 
+      textSize(20);
+      text("Ganaste, Felicitaciones", 180, 50);
+      text("Presiona 1 y luego x, y vuelve a jugar" ,100, 500);
+      text("Si desea salir, presione 0", 170,530);
+
+    }
+    
+  }
+  if (key=='1')
+    {value=0;}
+    if(key=='0'){
+    exit();}
+    
+   else {print(".");}
+  }
+ void mouseClicked() {
+  if (key=='x') {
+
+    int [] a = {300, 300, 360, 300, 240, 300, 500, 500, 100, 100};
+    int [] b = {100, 200, 260, 320, 260, 420, 420, 100, 100, 420};
+    for (i =0; i<a.length; i++) {
+      mX= a [i];
+      mY= b [i];
+      if (abs (mX - mouseX)< 8 && abs (mY - mouseY) < 8) {
+        value=value+1;
+        eraser[value-1]=i;
+        a1[value-1]= a[i];
+        b1[value-1]= b[i];
+      }
+    }
+  }
+  if (key=='a') {
+                      
+    int [] a = {500,150,450,300,100};
+    int [] b = {200,600,600,100,200};
+    for (i =0; i<a.length; i++) {
+      mX= a [i];
+      mY= b [i];
+      if (abs (mX - mouseX)< 8 && abs (mY - mouseY) < 8) {
+        value=value+1;
+        eraser[value-1]=i;
+        a1[value-1]= a[i];
+        b1[value-1]= b[i];
+      }
+    }
+  }
+  if (key=='z') {
+      
+    int [] a = {300,470,80,500,130};
+    int [] b = {100,430,200,200,430};
+    for (i =0; i<a.length; i++) {
+      mX= a [i];
+      mY= b [i];
+      if (abs (mX - mouseX)< 8 && abs (mY - mouseY) < 8) {
+        value=value+1;
+        eraser[value-1]=i;
+        a1[value-1]= a[i];
+        b1[value-1]= b[i];
+      }
+    }
+  }
+}
